@@ -1,29 +1,20 @@
-
 <?php
 
-namespace CodeDelivery\Models;
+namespace CodeDelivery;
 
 use Illuminate\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
-use Illuminate\Database\Eloquent\Model;
-use Prettus\Repository\Contracts\Transformable;
-use Prettus\Repository\Traits\TransformableTrait;
-
-class User extends Model implements Transformable, 
-                                    AuthenticatableContract,
+class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
                                     CanResetPasswordContract
 {
-    use TransformableTrait, Authenticatable, Authorizable, CanResetPassword;
-
-   public function client(){
-        return $this->hasOne(Client::class);
-    }
+    use Authenticatable, Authorizable, CanResetPassword;
 
     /**
      * The database table used by the model.
@@ -45,13 +36,4 @@ class User extends Model implements Transformable,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
-
 }
-
-
-
-
-
-
-
-

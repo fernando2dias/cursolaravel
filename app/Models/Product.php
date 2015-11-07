@@ -1,11 +1,12 @@
 <?php
 
 namespace CodeDelivery\Models;
-use CodeDelivery\Models\Category;
 
 use Illuminate\Database\Eloquent\Model;
+use Prettus\Repository\Contracts\Transformable;
+use Prettus\Repository\Traits\TransformableTrait;
 
-class Product extends Model
+class Product extends Model implements Transformable
 {
     protected $fillable = [
 	'category_id',
@@ -17,4 +18,5 @@ class Product extends Model
     public function category(){
     	return $this->belongsTo(Category::class);
     }
+
 }

@@ -8,6 +8,7 @@ use Prettus\Repository\Traits\TransformableTrait;
 
 class Category extends Model implements Transformable
 {
+	use TransformableTrait;
    protected $fillable = [
 	'name'  
     ];
